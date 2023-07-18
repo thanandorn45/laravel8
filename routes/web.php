@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,3 +62,43 @@ Route::get("/gallery/cat", function () {
     $cat = "http://www.onyxtruth.com/wp-content/uploads/2017/06/black-panther-movie-onyx-truth.jpg";
     return view("test/cat", compact("cat"));
 });
+Route::get("/teacher", function () {
+    return view("teacher");
+});
+
+Route::get("/student", function () {
+    return view("student");
+});
+
+Route::get("/theme", function () {
+    return view("theme");
+});
+
+// Route Template Inheritance
+Route::get("/teacher/inheritance", function () {
+    return view("teacher-inheritance");
+});
+Route::get("/student/inheritance", function () {
+    return view("student-inheritance");
+});
+
+// Route Template Component
+Route::get("/teacher/component", function () {
+    return view("teacher-component");
+});
+Route::get("/student/component", function () {
+    return view("student-component");
+});
+
+Route::get('/tables', function () {
+    return view('tables');
+});
+
+Route::get("/myprofile/create", [MyProfileController::class, "create"]);
+Route::get("/myprofile/{id}/edit", [MyProfileController::class, "edit"]);
+Route::get("/myprofile/{id}", [ MyProfileController::class , "show" ]);
+Route::get( "/coronavirus" ,[ MyProfileController::class , "coronavirus" ] );
+
+Route::get( "/newgallery" , [ MyProfileController::class , "gallery" ] );
+Route::get( "/newgallery/ant" , [ MyProfileController::class , "ant" ] );
+Route::get( "/newgallery/bird" , [ MyProfileController::class , "bird" ] );
